@@ -28,10 +28,9 @@ public class CustomerRepository {
             cust.setName(customer.getName());
             cust.setEmail((customer.getEmail()));
         }
-//        else{
-//            return ("Invalid id, please try again");
-//        }
-//        return
+        else{
+            throw new IllegalStateException("customer with this id not found");
+        }
     }
 
     private Customer getCustomerById(int id){
@@ -42,6 +41,9 @@ public class CustomerRepository {
         Customer cust = getCustomerById(id);
         if(cust != null){
             customers.remove(cust);
+        }
+        else{
+            throw new IllegalStateException("customer with this id not found");
         }
     }
 
